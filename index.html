@@ -9,13 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* لوحة الألوان الجديدة المستوحاة تماماً من الصورة العاجية */
-    --bg-main: #fcf9f5;      /* خلفية عاجية فاتحة جداً مريحة للعين */
-    --cream-dark: #f5eedf;   /* درجة كريمي أغمق للبطاقات والعداد */
-    --gold: #c5a059;         /* ذهبي كلاسيكي متناسق مع الخطوط */
-    --gold-soft: #e5dac1;    /* ذهبي ناعم للفواصل والحدود */
-    --brown: #4a3b32;        /* بني دافئ داكن للنصوص الأساسية والقراءة */
-    --brown-soft: #7a6b58;   /* بني ناعم للنصوص الثانوية */
+    --bg-main: #fcf9f5;      
+    --cream-dark: #f5eedf;   
+    --gold: #c5a059;         
+    --gold-soft: #e5dac1;    
+    --brown: #4a3b32;        
+    --brown-soft: #7a6b58;   
     
     --script:'Great Vibes', cursive;
     --serif:'Cormorant Garamond', serif;
@@ -134,29 +133,33 @@
   .envelope.opened .env-seal{ opacity:0; transform:translate(-50%,-50%) scale(0.3); pointer-events: none; }
   .env-seal span{ font-family:var(--script); color:#ffffff; font-size:1.35rem; }
 
-  /* ================= HERO FULL SCREEN FIXED ================= */
+  /* ================= HERO ADJUSTMENTS ================= */
   #hero {
-    padding: 0;
-    margin: 0;
+    padding: 0 !important; 
+    margin: 0 !important;
     width: 100%;
-    height: 100vh; /* يملأ الشاشة الأولى بالكامل بالارتفاع */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    display: block;
     background-color: var(--bg-main);
   }
   .hero-image-card {
     width: 100%;
-    height: 100%;
-    border-radius: 0; /* إلغاء الحواف الدائرية لتملأ الشاشة تماماً */
-    box-shadow: none; /* إلغاء الظلال لتبدو كصفحة تطبيق كاملة */
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center;
   }
   .hero-image-card img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* يضمن التفاف الصورة وملئها لكامل الأبعاد بدون تمطيط */
+    height: auto;
     display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 480px) {
+    #hero {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
   }
 
   /* ================= VOWS ================= */
