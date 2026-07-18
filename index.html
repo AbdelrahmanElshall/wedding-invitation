@@ -17,7 +17,8 @@
     --rose-pink: #d47a8d;     
     --rose-dark: #b85a6e;     
     --leaf-green: #5a7354;
-    
+    --blank: #faecdd;
+
     --script:'Great Vibes', cursive;
     --serif:'Cormorant Garamond', serif;
     --label:'Cinzel', serif;
@@ -43,17 +44,32 @@
   .page{
     max-width:var(--maxw);
     margin:0 auto;
-    background:var(--bg-main);
+    background: var(--blank);
     position:relative;
     box-shadow:0 0 60px rgba(42, 59, 41, 0.15);
     min-height:100vh;
-    
-    /* صورة الخلفية تتكرر رأسيًا بانسيابية على كامل الكارت دون تقطيع */
-    background-image: url('WhatsApp Image 2026-07-18 at 4.54.02 PM.jpeg');
-    background-size: 100% auto;
-    background-position: center top;
-    background-repeat: repeat-y;
-    background-attachment: scroll;
+  }
+
+  /* كل قسم مكتوب بيتحط جوه إطار خاص بيه: زخرفة علوية + زخرفة سفلية،
+     والمساحة بينهم بلون موحد يطابق "الحتة الفاضية" الأصلية في الصورة،
+     والنص/العناصر بتتمركز في المنتصف بين الزخرفتين.
+     الـ padding-top/bottom بالنسبة المئوية عشان تفضل متناسبة مع حجم صورة
+     الزخرفة (background-size) على أي عرض شاشة، وبيمنع كمان أي "قفشة" فاضية
+     فوق أول قسم (margin collapse) لأن الحاوية بقى ليها padding فعلي. */
+  .framed{
+    position:relative;
+    background-color: var(--blank);
+    background-image:
+      url('bg-top.jpg'),
+      url('bg-bottom.jpg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: top center, bottom center;
+    background-size: 100% auto, 100% auto;
+    padding-top: 50.7%;
+    padding-bottom: 70.3%;
+  }
+  .framed:first-of-type{
+    padding-top: 52%;
   }
 
   img,svg{display:block; max-width:100%;}
@@ -90,7 +106,7 @@
   /* جعل الأقسام شفافة تماماً لإبراز صورة الخلفية وإزالة اللون الأبيض */
   section:not(#hero) {
     position: relative;
-    padding: 64px 26px;
+    padding: 6px 26px 18px;
     text-align: center;
     background-color: transparent !important; 
     background-blend-mode: normal !important;
@@ -215,13 +231,13 @@
     padding-top: 2px;
   }
 
-  /* ================= HERO (تعديل ليحجب الخلفية بلون ثابت في الصفحة الأولى) ================= */
+  /* ================= HERO ================= */
   #hero {
     padding: 0 !important; 
     margin: 0 !important;
     width: 100%;
     display: block;
-    background-color: var(--bg-main) !important; /* يحجب النقشة في أول صفحة */
+    background-color: var(--bg-main) !important;
     position: relative;
     z-index: 5;
   }
@@ -325,7 +341,6 @@
   body.en .timeline { text-align: left; }
 
   .tl-item{ display:grid; grid-template-columns:64px 30px 1fr; align-items:start; min-height:64px; }
-  html[dir="rtl"] .tl-item { grid-template-columns:1fr 30px 64px; }
 
   .tl-time{ font-family:var(--label); font-size:.68rem; letter-spacing:.06em; color:var(--gold); text-align:left; padding-top:3px; font-weight: 700; }
   html[dir="rtl"] .tl-time { text-align: right; font-family: var(--arabic); font-size: 0.8rem; }
@@ -457,28 +472,19 @@
     </div>
   </section>
 
-  <div class="divider reveal">
-    <span class="line"></span>
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-      <path d="M12 2c3 4 3 8 0 10 -3-2-3-6 0-10Z"/>
-      <path d="M12 12v10"/>
-      <path d="M6 22c1-4 3-6 6-6s5 2 6 6"/>
-    </svg>
-    <span class="line"></span>
-  </div>
-
+  <div class="framed">
   <section id="vows">
     <div class="reveal">
-      <div class="quote-mark">“</div>
+      <div class="quote-mark">"</div>
       <p class="quote-text data-lang" data-en="Two souls, one heart — bound by love, blessed to begin forever, together." data-ar="روحان، وقلب واحد — يجمعهما الحب، ويباركها الله ليبدآ معاً رحلة العمر."></p>
       <div class="quote-source data-lang" data-en="with love & blessings" data-ar="بكل حب وبركة">بكل حب وبركة</div>
     </div>
     <p class="welcome-msg reveal data-lang" data-en="To our beloved family and friends — your presence has shaped our story, and we would be so honoured to have you beside us as we begin this new chapter." data-ar="إلى عائلتنا وأصدقائنا الأعزاء — لقد شاركتمونا أجمل لحظات قصتنا، ويشرفنا جداً أن تكونوا بجانبنا ونحن نبدأ هذا الفصل الجديد من حياتنا."></p>
     <div class="celebration-tag reveal data-lang" data-en="The Celebration Begins" data-ar="بداية الاحتفال">بداية الاحتفال</div>
   </section>
+  </div>
 
-  <div class="divider reveal"><span class="line"></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2c3 4 3 8 0 10 -3-2-3-6 0-10Z"/><path d="M12 12v10"/><path d="M6 22c1-4 3-6 6-6s5 2 6 6"/></svg><span class="line"></span></div>
-
+  <div class="framed">
   <section id="countdown">
     <div class="reveal">
       <div class="count-title data-lang" data-en="Counting down to forever" data-ar="العد التنازلي لليلتنا الكبرى">العد التنازلي لليلتنا الكبرى</div>
@@ -490,7 +496,9 @@
       </div>
     </div>
   </section>
+  </div>
 
+  <div class="framed">
   <section id="schedule">
     <div class="reveal">
       <div class="section-title data-lang" data-en="Order of the Day" data-ar="برنامج الحفل">برنامج الحفل</div>
@@ -539,7 +547,9 @@
       </div>
     </div>
   </section>
+  </div>
 
+  <div class="framed">
   <section id="location">
     <div class="reveal">
       <svg class="venue-illustration" viewBox="0 0 140 110" fill="none" stroke="currentColor" stroke-width="1.3">
@@ -567,7 +577,9 @@
       </div>
     </div>
   </section>
+  </div>
 
+  <div class="framed">
   <section id="closing">
     <div class="reveal" style="margin-top: 20px; z-index: 2;">
       <div class="eyebrow" id="closing-date">٠٥ · ٠٩ · ٢٠٢٦</div>
@@ -585,6 +597,7 @@
       <div class="closing-footer data-lang" data-en="With love & gratitude" data-ar="بكل حب وامتنان">بكل حب وامتنان</div>
     </div>
   </section>
+  </div>
 
 </div>
 
