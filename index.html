@@ -6,7 +6,8 @@
 <title>Abd Elrahman & Tasneem — 05.09.2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- تم إضافة خط Reem Kufi Fun ليعطي مظهراً شيكاً وغير تقليدي -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600&family=Reem+Kufi+Fun:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg-main: #fcf9f5;      
@@ -19,7 +20,7 @@
     --script:'Great Vibes', cursive;
     --serif:'Cormorant Garamond', serif;
     --label:'Cinzel', serif;
-    --arabic: 'Cairo', sans-serif;
+    --arabic: 'Reem Kufi Fun', sans-serif;
     --maxw:430px;
     --dur:.9s;
   }
@@ -64,7 +65,7 @@
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid var(--gold);
     color: var(--brown);
-    padding: 6px 12px;
+    padding: 6px 14px;
     font-size: 0.8rem;
     cursor: pointer;
     border-radius: 20px;
@@ -96,8 +97,8 @@
   }
   body:not(.en) .eyebrow {
     font-family: var(--arabic);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
   }
 
   section{position:relative; padding:64px 26px; text-align:center;}
@@ -139,7 +140,7 @@
   }
   body:not(.en) .env-names {
     font-family: var(--arabic);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
   }
 
@@ -187,6 +188,7 @@
   body:not(.en) .env-seal span {
     font-family: var(--arabic);
     font-size: 1.1rem;
+    padding-top: 2px;
   }
 
   /* ================= HERO ADJUSTMENTS ================= */
@@ -222,6 +224,7 @@
     font-family: var(--arabic);
     font-size: 1.1rem;
     font-style: normal;
+    line-height: 1.8;
   }
 
   .quote-source{ font-family:var(--label); font-size:.62rem; letter-spacing:.18em; color:var(--brown-soft); text-transform:uppercase; }
@@ -235,6 +238,7 @@
   body:not(.en) .welcome-msg {
     font-family: var(--arabic);
     font-size: 0.95rem;
+    line-height: 1.8;
   }
 
   .celebration-tag{
@@ -242,7 +246,7 @@
   }
   body:not(.en) .celebration-tag {
     font-family: var(--arabic);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
   }
 
@@ -251,7 +255,7 @@
   .count-title{ font-family:var(--script); font-size:1.9rem; color:var(--brown); margin-bottom:22px; }
   body:not(.en) .count-title {
     font-family: var(--arabic);
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 600;
   }
 
@@ -264,7 +268,7 @@
   .count-label{ font-family:var(--label); font-size:.55rem; letter-spacing:.14em; color:var(--brown-soft); text-transform:uppercase; margin-top:4px; }
   body:not(.en) .count-label {
     font-family: var(--arabic);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0;
   }
 
@@ -290,7 +294,7 @@
   html[dir="rtl"] .tl-item { grid-template-columns:1fr 30px 64px; }
 
   .tl-time{ font-family:var(--label); font-size:.68rem; letter-spacing:.06em; color:var(--gold); text-align:left; padding-top:3px; }
-  html[dir="rtl"] .tl-time { text-align: right; font-family: var(--arabic); }
+  html[dir="rtl"] .tl-time { text-align: right; font-family: var(--arabic); font-size: 0.8rem; }
   body.en .tl-time { text-align: right; }
   html[dir="ltr"].en .tl-time { text-align: right; }
 
@@ -307,19 +311,19 @@
   .tl-event{ padding-right:14px; padding-top:0; padding-bottom:26px; font-family:var(--arabic); }
   body.en .tl-event { padding-right: 0; padding-left: 14px; font-family: var(--serif); }
   
-  .tl-event .name{ font-size:1rem; color:var(--brown); font-weight:600; }
+  .tl-event .name{ font-size:0.95rem; color:var(--brown); font-weight:600; }
   body.en .tl-event .name { font-size: 1.08rem; }
   .tl-event .desc{ font-size:.8rem; color:var(--brown-soft); font-style:italic; }
-  body:not(.en) .tl-event .desc { font-style: normal; font-size: 0.75rem; }
+  body:not(.en) .tl-event .desc { font-style: normal; font-size: 0.75rem; margin-top: 2px; }
 
   /* ================= LOCATION ================= */
   #location{ background:var(--cream-dark); }
   .venue-illustration{ width:150px; margin:0 auto 18px; color:var(--gold); }
   .venue-name{ font-family:var(--script); font-size:1.75rem; color:var(--brown); }
-  body:not(.en) .venue-name { font-family: var(--arabic); font-size: 1.3rem; font-weight: 600; }
+  body:not(.en) .venue-name { font-family: var(--arabic); font-size: 1.25rem; font-weight: 600; }
   
   .venue-address{ font-family:var(--serif); font-size:1rem; color:var(--brown-soft); margin-top:6px; line-height:1.5; }
-  body:not(.en) .venue-address { font-family: var(--arabic); font-size: 0.85rem; }
+  body:not(.en) .venue-address { font-family: var(--arabic); font-size: 0.85rem; line-height: 1.6; }
 
   .map-preview{
     margin:22px auto 20px; width:100%; max-width:320px; height:150px;
@@ -361,7 +365,7 @@
   #closing .divider .line{ background:linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
   
   .closing-msg{ font-family:var(--script); font-size:2.3rem; color:var(--bg-main); margin:16px 0 20px; }
-  body:not(.en) .closing-msg { font-family: var(--arabic); font-size: 1.5rem; }
+  body:not(.en) .closing-msg { font-family: var(--arabic); font-size: 1.4rem; }
 
   .circle-frame{
     width:150px; height:150px; border-radius:50%; margin:22px auto;
@@ -376,7 +380,7 @@
   .circle-frame svg{ width:78px; color:var(--gold-soft); }
   
   .closing-names{ font-family:var(--script); font-size:2rem; color:var(--gold-soft); margin-top:10px; }
-  body:not(.en) .closing-names { font-family: var(--arabic); font-size: 1.4rem; }
+  body:not(.en) .closing-names { font-family: var(--arabic); font-size: 1.35rem; }
 
   .closing-footer{ margin-top:34px; font-family:var(--label); font-size:.58rem; letter-spacing:.2em; color:var(--gold-soft); text-transform:uppercase; }
   body:not(.en) .closing-footer { font-family: var(--arabic); font-size: 0.75rem; letter-spacing: 0; }
@@ -407,7 +411,7 @@
 
   <section id="hero">
     <div class="hero-image-card reveal">
-      <img src="wedding-card2.jpg" alt="Wedding Invitation Card - Abd Elrahman & Tasneem">
+      <img src="wedding-card3.jpg" alt="Wedding Invitation Card - Abd Elrahman & Tasneem">
     </div>
   </section>
 
@@ -569,7 +573,7 @@
   });
 
   /* ---------- Multi-Language Logic ---------- */
-  var currentLang = "ar"; // يبدأ بالعربية تلقائياً
+  var currentLang = "ar"; 
   var langBtn = document.getElementById('langBtn');
   var elementsToTranslate = document.querySelectorAll('.data-lang');
   var closingDate = document.getElementById('closing-date');
@@ -600,7 +604,6 @@
     updateLanguage(currentLang);
   });
 
-  // تشغيل التهيئة المبدئية للغة العربية
   updateLanguage(currentLang);
 
   /* ---------- Scroll reveal ---------- */
@@ -619,7 +622,7 @@
     revealEls.forEach(function(el){ el.classList.add('in-view'); });
   }
 
-  /* ---------- Countdown (تاريخ 5 سبتمبر 2026) ---------- */
+  /* ---------- Countdown (05.09.2026) ---------- */
   var target = new Date('2026-09-05T17:00:00+05:30').getTime();
   var elDays = document.getElementById('cd-days');
   var elHours = document.getElementById('cd-hours');
