@@ -47,7 +47,13 @@
     position:relative;
     box-shadow:0 0 60px rgba(42, 59, 41, 0.15);
     min-height:100vh;
-    overflow: hidden;
+    
+    /* صورة الخلفية تتكرر رأسيًا بانسيابية على كامل الكارت دون تقطيع */
+    background-image: url('WhatsApp Image 2026-07-18 at 4.54.02 PM.jpeg');
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: repeat-y;
+    background-attachment: scroll;
   }
 
   img,svg{display:block; max-width:100%;}
@@ -81,36 +87,20 @@
     color: #fff;
   }
 
-  /* الزخارف والورود الجانبية لملء الصفحة تفاصيل */
-  .floral-frame {
-    width: 100%;
-    height: 35px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'%3E%3Cpath d='M10 20 Q15 10 20 20 T30 20' fill='none' stroke='%235a7354' stroke-width='1.5'/%3E%3Ccircle cx='15' cy='15' r='5' fill='%23d47a8d'/%3E%3Ccircle cx='25' cy='18' r='3' fill='%23decba4'/%3E%3Ccircle cx='45' cy='12' r='4' fill='%23b85a6e'/%3E%3Cpath d='M40 20 Q45 15 50 25' fill='none' stroke='%235a7354' stroke-width='1'/%3E%3C/svg%3E");
-    background-repeat: repeat-x;
-    opacity: 0.85;
-  }
-  .floral-frame.bottom {
-    transform: scaleY(-1);
+  /* جعل الأقسام شفافة تماماً لإبراز صورة الخلفية وإزالة اللون الأبيض */
+  section:not(#hero) {
+    position: relative;
+    padding: 64px 26px;
+    text-align: center;
+    background-color: transparent !important; 
+    background-blend-mode: normal !important;
   }
 
+  /* إزالة أي تداخلات أو زخارف قديمة */
+  .floral-frame,
+  .leaf-bg,
   .corner-ornament {
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    color: var(--gold-soft);
-    opacity: 0.6;
-    z-index: 5;
-  }
-  .top-left { top: 15px; left: 15px; }
-  .top-right { top: 15px; right: 15px; transform: scaleX(-1); }
-
-  /* بتلات وأوراق متناثرة في الخلفية */
-  .leaf-bg {
-    position: absolute;
-    pointer-events: none;
-    opacity: 0.12;
-    color: var(--leaf-green);
-    z-index: 1;
+    display: none !important;
   }
 
   .divider{
@@ -138,10 +128,8 @@
     letter-spacing: 0.05em;
   }
 
-  section{position:relative; padding:64px 26px; text-align:center;}
-
   .reveal{opacity:0; transform:translateY(28px); transition:opacity var(--dur) ease, transform var(--dur) ease;}
-  .reveal.in-view{opacity:1; transform:translateY(0);}
+  .reveal.in-view{opacity:1; transform:none; transform:translateY(0);}
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
     html{scroll-behavior:auto;}
@@ -227,13 +215,15 @@
     padding-top: 2px;
   }
 
-  /* ================= HERO (NO FLOWERS HERE) ================= */
+  /* ================= HERO (تعديل ليحجب الخلفية بلون ثابت في الصفحة الأولى) ================= */
   #hero {
     padding: 0 !important; 
     margin: 0 !important;
     width: 100%;
     display: block;
-    background-color: var(--bg-main);
+    background-color: var(--bg-main) !important; /* يحجب النقشة في أول صفحة */
+    position: relative;
+    z-index: 5;
   }
   .hero-image-card {
     width: 100%;
@@ -288,7 +278,7 @@
   }
 
   /* ================= COUNTDOWN ================= */
-  #countdown{ background:var(--cream-dark); position: relative;}
+  #countdown{ position: relative;}
   .count-title{ font-family:var(--script); font-size:1.9rem; color:var(--deep-green); margin-bottom:22px; position: relative; z-index: 2;}
   body:not(.en) .count-title {
     font-family: var(--arabic);
@@ -298,20 +288,14 @@
 
   .count-grid{ display:flex; justify-content:center; gap:12px; direction: ltr !important; position: relative; z-index: 2;}
   .count-box{
-    background:var(--bg-main); border:1px solid var(--gold-soft);
+    background:rgba(251, 247, 240, 0.6); border:1px solid var(--gold-soft);
     border-radius:10px; padding:14px 4px; width:72px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     position: relative;
     overflow: hidden;
   }
   .count-box::before {
-    content: "✿";
-    position: absolute;
-    bottom: -5px;
-    right: -5px;
-    font-size: 1.5rem;
-    color: var(--rose-pink);
-    opacity: 0.15;
+    display: none !important;
   }
   .count-num{ font-family:var(--serif); font-size:1.85rem; font-weight:600; color:var(--rose-dark); font-variant-numeric:tabular-nums; }
   .count-label{ font-family:var(--label); font-size:.55rem; letter-spacing:.14em; color:var(--deep-green); text-transform:uppercase; margin-top:4px; }
@@ -356,7 +340,7 @@
   
   .tl-dot{
     width:15px; height:15px; display: flex; align-items: center; justify-content: center;
-    color: var(--rose-pink); font-size: 0.9rem; margin-top:1px; z-index:2; background: var(--bg-main);
+    color: var(--rose-pink); font-size: 0.9rem; margin-top:1px; z-index:2; background: transparent;
   }
   .tl-dot::after { content: "❀"; }
   
@@ -369,7 +353,7 @@
   body:not(.en) .tl-event .desc { font-style: normal; font-size: 0.75rem; margin-top: 2px; }
 
   /* ================= LOCATION ================= */
-  #location{ background:var(--cream-dark); position: relative;}
+  #location{ position: relative;}
   .venue-illustration{ width:150px; margin:0 auto 18px; color:var(--gold); position: relative; z-index: 2;}
   .venue-name{ font-family:var(--script); font-size:1.75rem; color:var(--deep-green); position: relative; z-index: 2;}
   body:not(.en) .venue-name { font-family: var(--arabic); font-size: 1.25rem; font-weight: 600; }
@@ -385,7 +369,7 @@
     background:
       repeating-linear-gradient(0deg, #ebdcc5 0 1px, transparent 1px 26px),
       repeating-linear-gradient(90deg, #ebdcc5 0 1px, transparent 1px 26px),
-      #fcf7ef;
+      rgba(251, 247, 240, 0.7); 
   }
   .map-preview .road{ position:absolute; background:#e0d3be77; }
   .map-preview .road.r1{ top:44%; left:0; right:0; height:10px; }
@@ -404,39 +388,43 @@
   }
   body:not(.en) .btn { font-family: var(--arabic); font-size: 0.75rem; letter-spacing: 0; }
   
-  .btn-outline{ color:var(--gold); background:transparent; font-weight: 600; }
+  .btn-outline{ color:var(--gold); background:rgba(255,255,255,0.6); font-weight: 600; }
   .btn-outline:hover{ background:var(--gold); color:var(--bg-main); }
   .btn-solid{ color:var(--bg-main); background:var(--deep-green); border-color: var(--deep-green); }
   .btn-solid:hover{ transform:translateY(-2px); background: var(--gold); border-color: var(--gold); }
 
   /* ================= CLOSING ================= */
   #closing{
-    background:linear-gradient(180deg, var(--deep-green), #1a2619);
-    color:var(--bg-main); padding-bottom:70px;
+    background: transparent !important; 
+    color: var(--deep-green); 
+    padding-bottom:70px;
     position: relative;
   }
-  #closing .eyebrow{ color:var(--gold-soft); }
-  #closing .divider .line{ background:linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
+
+  #closing .eyebrow{ color:var(--rose-dark); }
+  #closing .divider .line{ background:linear-gradient(90deg, transparent, var(--gold), transparent); }
+  #closing .divider { color: var(--rose-pink); }
   
-  .closing-msg{ font-family:var(--script); font-size:2.3rem; color:var(--bg-main); margin:16px 0 20px; position: relative; z-index: 2;}
+  .closing-msg{ font-family:var(--script); font-size:2.3rem; color:var(--deep-green); margin:16px 0 20px; position: relative; z-index: 2;}
   body:not(.en) .closing-msg { font-family: var(--arabic); font-size: 1.4rem; }
 
   .circle-frame{
     width:150px; height:150px; border-radius:50%; margin:22px auto;
     border:1.5px solid var(--gold-soft);
     display:flex; align-items:center; justify-content:center;
-    background:radial-gradient(circle, #3b4f3a, var(--deep-green));
+    background:radial-gradient(circle, #fbf7f0, #f3eae0);
     position:relative; z-index: 2;
+    box-shadow: 0 4px 15px rgba(42, 59, 41, 0.05);
   }
   .circle-frame::before{
-    content:""; position:absolute; inset:8px; border:1px solid rgba(239, 218, 193, 0.2); border-radius:50%;
+    content:""; position:absolute; inset:8px; border:1px solid rgba(197, 160, 89, 0.2); border-radius:50%;
   }
-  .circle-frame svg{ width:78px; color:var(--gold-soft); }
+  .circle-frame svg{ width:78px; color:var(--gold); }
   
-  .closing-names{ font-family:var(--script); font-size:2rem; color:var(--gold-soft); margin-top:10px; position: relative; z-index: 2;}
+  .closing-names{ font-family:var(--script); font-size:2rem; color:var(--deep-green); margin-top:10px; position: relative; z-index: 2;}
   body:not(.en) .closing-names { font-family: var(--arabic); font-size: 1.35rem; }
 
-  .closing-footer{ margin-top:34px; font-family:var(--label); font-size:.58rem; letter-spacing:.2em; color:var(--gold-soft); text-transform:uppercase; position: relative; z-index: 2;}
+  .closing-footer{ margin-top:34px; font-family:var(--label); font-size:.58rem; letter-spacing:.2em; color:var(--rose-dark); text-transform:uppercase; position: relative; z-index: 2;}
   body:not(.en) .closing-footer { font-family: var(--arabic); font-size: 0.75rem; letter-spacing: 0; }
 
 </style>
@@ -463,7 +451,6 @@
     <button class="lang-btn" id="langBtn">English</button>
   </div>
 
-  <!-- القسم الأول النظيف بدون أي ورود أو إطارات بصرية مشتتة حول الصورة -->
   <section id="hero">
     <div class="hero-image-card reveal">
       <img src="wedding-card3.jpg" alt="Wedding Invitation Card - Abd Elrahman & Tasneem">
@@ -480,11 +467,7 @@
     <span class="line"></span>
   </div>
 
-  <!-- تبدأ تفاصيل الورود والبتلات من هنا مع تصفح المحتوى الفعلي -->
   <section id="vows">
-    <svg class="leaf-bg" style="top:20px; left:15px; width:40px; transform:rotate(45deg);" viewBox="0 0 24 24" fill="currentColor"><path d="M17,8C15,6 12,6 10,8C8,10 8,13 10,15C12,17 15,17 17,15C19,13 19,10 17,8Z"/></svg>
-    <svg class="leaf-bg" style="bottom:40px; right:20px; width:35px; color:var(--rose-pink); opacity:0.18;" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/></svg>
-
     <div class="reveal">
       <div class="quote-mark">“</div>
       <p class="quote-text data-lang" data-en="Two souls, one heart — bound by love, blessed to begin forever, together." data-ar="روحان، وقلب واحد — يجمعهما الحب، ويباركها الله ليبدآ معاً رحلة العمر."></p>
@@ -497,9 +480,6 @@
   <div class="divider reveal"><span class="line"></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2c3 4 3 8 0 10 -3-2-3-6 0-10Z"/><path d="M12 12v10"/><path d="M6 22c1-4 3-6 6-6s5 2 6 6"/></svg><span class="line"></span></div>
 
   <section id="countdown">
-    <svg class="corner-ornament top-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4h16M4 4v16M8 4v12h12"/></svg>
-    <svg class="corner-ornament top-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4h16M4 4v16M8 4v12h12"/></svg>
-    
     <div class="reveal">
       <div class="count-title data-lang" data-en="Counting down to forever" data-ar="العد التنازلي لليلتنا الكبرى">العد التنازلي لليلتنا الكبرى</div>
       <div class="count-grid">
@@ -512,9 +492,6 @@
   </section>
 
   <section id="schedule">
-    <svg class="leaf-bg" style="top:40px; right:10px; width:45px; color:var(--rose-pink);" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 14c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></svg>
-    <svg class="leaf-bg" style="bottom:100px; left:10px; width:40px; transform:rotate(-30deg);" viewBox="0 0 24 24" fill="currentColor"><path d="M17,8C15,6 12,6 10,8C8,10 8,13 10,15C12,17 15,17 17,15C19,13 19,10 17,8Z"/></svg>
-
     <div class="reveal">
       <div class="section-title data-lang" data-en="Order of the Day" data-ar="برنامج الحفل">برنامج الحفل</div>
       <div class="section-caption data-lang" data-en="Schedule of Events" data-ar="جدول الفعاليات">جدول الفعاليات</div>
@@ -592,9 +569,7 @@
   </section>
 
   <section id="closing">
-    <div class="floral-frame" style="position: absolute; top:0; left:0; filter: brightness(1.5);"></div>
-
-    <div class="reveal" style="margin-top: 20px;">
+    <div class="reveal" style="margin-top: 20px; z-index: 2;">
       <div class="eyebrow" id="closing-date">٠٥ · ٠٩ · ٢٠٢٦</div>
       <div class="closing-msg data-lang" data-en="Hope to see you there!" data-ar="نتطلع لرؤيتكم جميعاً!">نتطلع لرؤيتكم جميعاً!</div>
       <div class="circle-frame">
@@ -610,9 +585,6 @@
       <div class="closing-footer data-lang" data-en="With love & gratitude" data-ar="بكل حب وامتنان">بكل حب وامتنان</div>
     </div>
   </section>
-
-  <!-- حبل ورود سفلي متناسق لإنهاء الصفحة بشكل جمالي -->
-  <div class="floral-frame bottom"></div>
 
 </div>
 
